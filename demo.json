@@ -1,0 +1,532 @@
+{
+    "_id" : "demo",
+    "components" : [ 
+        {
+            "type" : "textfield",
+            "inputType" : "text",
+            "name" : "definitionName",
+            "path" : "definitionName",
+            "label" : "在实际业务中该字段不存在，便于调试",
+            "placeholder" : "在实际业务中该字段不存在，便于调试",
+            "hidden" : true,
+            "defaultvalue" : "yekang",
+            "rules" : []
+        }, 
+        {
+            "type" : "container",
+            "name" : "ApplicationInfo",
+            "label" : "上传图片",
+            "components" : [ 
+                {
+                    "type" : "upload",
+                    "name" : "files",
+                    "path" : "QUploadFile.qfiles",
+                    "label" : "上传",
+                    "action" : "http://172.16.35.51:3000/api/upload",
+                    "multiple" : true,
+                    "disabled" : false,
+                    "showUploadList" : true,
+                    "fileType" : "picture",
+                    "accept" : ".csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/plain,image/*,text/html,video/*,audio/*,.pdf",
+                    "conditionMap" : [ 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelMat",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelKid",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelFri",
+                            "actionValue" : true,
+                            "action" : "hidden"
+                        }
+                    ],
+                    "rules" : []
+                }, 
+                {
+                    "type" : "upload",
+                    "name" : "filestext",
+                    "path" : "QUploadFile.qfilestext",
+                    "label" : "上传",
+                    "action" : "http://172.16.35.51:3000/api/upload",
+                    "multiple" : true,
+                    "disabled" : false,
+                    "showUploadList" : true,
+                    "fileType" : "text",
+                    "accept" : ".csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/plain,image/*,text/html,video/*,audio/*,.pdf",
+                    "conditionMap" : [ 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelMat",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelKid",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelFri",
+                            "actionValue" : true,
+                            "action" : "hidden"
+                        }
+                    ],
+                    "rules" : []
+                }
+            ]
+        }, 
+        {
+            "type" : "container",
+            "name" : "ApplicationInfo",
+            "label" : "申请信息",
+            "components" : [ 
+                {
+                    "type" : "select",
+                    "name" : "selectabc",
+                    "optionDataKey" : "STAFF_RELATIONSHIP",
+                    "path" : "selectabc",
+                    "label" : "级联一级",
+                    "options" : [],
+                    "rules" : []
+                }, 
+                {
+                    "type" : "select",
+                    "name" : "selecttest",
+                    "optionDataKey" : "STAFF_RELATIONSHIP",
+                    "path" : "selecttest",
+                    "label" : "级联二级",
+                    "options" : [],
+                    "rules" : [],
+                    "conditionMap" : [ 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelMat",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelKid",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelFri",
+                            "actionValue" : true,
+                            "action" : "hidden"
+                        }
+                    ]
+                }
+            ]
+        }, 
+        {
+            "type" : "container",
+            "name" : "ApplicationInfo",
+            "label" : "申请信息",
+            "components" : [ 
+                {
+                    "type" : "cascadeSelect",
+                    "name" : "area",
+                    "optionDataKey" : "CITY",
+                    "path" : "area",
+                    "label" : "现居住区域",
+                    "placeholder" : "Please select",
+                    "defaultvalue" : [ 
+                        "110000", 
+                        "110100", 
+                        "110101"
+                    ],
+                    "disabled" : false,
+                    "options" : [],
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "居住区域"
+                        }
+                    ],
+                    "conditionMap" : [ 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelMat",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelKid",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelFri",
+                            "actionValue" : true,
+                            "action" : "hidden"
+                        }
+                    ],
+                    "place" : "TOPBOTTOM"
+                }, 
+                {
+                    "type" : "inputNumber",
+                    "name" : "AmtRequire",
+                    "path" : "AmtRequire",
+                    "label" : "借款金额",
+                    "textAfter" : "元",
+                    "defaultvalue" : 11,
+                    "min" : 1000,
+                    "conditionMap" : [ 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelMat",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelKid",
+                            "actionValue" : true,
+                            "action" : "disabled"
+                        }, 
+                        {
+                            "whichcontrol" : "selectabc",
+                            "how" : "equal",
+                            "value" : "relationshipRelFri",
+                            "actionValue" : true,
+                            "action" : "hidden"
+                        }
+                    ],
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "借款金额不能为空"
+                        }
+                    ]
+                }, 
+                {
+                    "type" : "textfield",
+                    "inputType" : "text",
+                    "name" : "zhansName",
+                    "path" : "zhansName",
+                    "label" : "姓名",
+                    "defaultvalue" : "张三",
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "姓名为必填"
+                        }
+                    ]
+                }, 
+                {
+                    "type" : "rangepicker",
+                    "name" : "rangepicker",
+                    "label" : "日期选择",
+                    "path" : "rangepicker",
+                    "placeholder" : "日期选择",
+                    "format" : "YYYY-MM-DD",
+                    "defaultvalue" : {
+                        "starttime" : "2017-04-01",
+                        "endtime" : "2017-05-17"
+                    },
+                    "showtime" : false,
+                    "rules" : [ 
+                        {
+                            "type" : "array",
+                            "required" : true,
+                            "message" : "Please select time!"
+                        }
+                    ]
+                }, 
+                {
+                    "type" : "datepicker",
+                    "name" : "datepicker",
+                    "path" : "datepicker",
+                    "label" : "日期",
+                    "format" : "YYYY-MM-DD",
+                    "viewable" : false,
+                    "disabled" : false,
+                    "defaultvalue" : "",
+                    "showtime" : false,
+                    "placeholder" : "请输入日期",
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "日期不能为空"
+                        }
+                    ],
+                    "style" : {
+                        "width" : "300px"
+                    },
+                    "popupstyle" : {
+                        "width" : "500px"
+                    }
+                }, 
+                {
+                    "type" : "timepicker",
+                    "name" : "timepicker",
+                    "path" : "timepicker",
+                    "label" : "时间",
+                    "placeholder" : "时间",
+                    "format" : "kk:mm:ss",
+                    "disabled" : false,
+                    "defaultvalue" : "23:24:12",
+                    "use12hours" : false,
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "姓名不能为空"
+                        }
+                    ]
+                }, 
+                {
+                    "type" : "switch",
+                    "name" : "switch",
+                    "path" : "switch",
+                    "label" : "开关",
+                    "isicon" : true,
+                    "defaultvalue" : true,
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "姓名不能为空"
+                        }
+                    ]
+                }, 
+                {
+                    "type" : "monthpicker",
+                    "name" : "monthpicker",
+                    "path" : "monthpicker",
+                    "label" : "月份日期",
+                    "format" : "YYYY-MM",
+                    "defaultvalue" : "2017-05",
+                    "disabled" : false,
+                    "placeholder" : "月份日期",
+                    "rules" : [ 
+                        {
+                            "required" : true,
+                            "message" : "姓名不能为空"
+                        }
+                    ],
+                    "style" : {
+                        "width" : "300px"
+                    },
+                    "popupstyle" : {
+                        "width" : "500px"
+                    }
+                }, 
+                {
+                    "id" : "7053c4a4-4760-11e7-bed4-1b512d1c26af",
+                    "type" : "container",
+                    "name" : "ApplicationInfo",
+                    "label" : "您的联系人资料",
+                    "components" : [ 
+                        {
+                            "type" : "DynamicControl",
+                            "label" : "联系人",
+                            "name" : "containerInfo",
+                            "title" : [ 
+                                "家庭联系人1", 
+                                "家庭联系人2", 
+                                "紧急联系人", 
+                                "工作证明人"
+                            ],
+                            "defaultCount" : 4,
+                            "template" : {
+                                "type" : "container",
+                                "name" : "ContactDetail",
+                                "label" : "家庭联系人1",
+                                "components" : [ 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "testName",
+                                        "path" : "testName",
+                                        "label" : "姓名",
+                                        "placeholder" : "请输入姓名",
+                                        "rules" : [ 
+                                            {
+                                                "required" : true,
+                                                "message" : "年龄为必填"
+                                            }
+                                        ]
+                                    }, 
+                                    {
+                                        "type" : "select",
+                                        "name" : "Type",
+                                        "optionDataKey" : "STAFF_RELATIONSHIP",
+                                        "path" : "ContactInfo1.Type",
+                                        "label" : "家庭联系人1",
+                                        "options" : [],
+                                        "rules" : []
+                                    }, 
+                                    {
+                                        "type" : "radioGroup",
+                                        "name" : "HomeIs",
+                                        "optionDataKey" : "CONSTANTS",
+                                        "path" : "ContactInfo1.HomeIs",
+                                        "label" : "家人是否知晓借款",
+                                        "hasOther" : false,
+                                        "textField" : "label",
+                                        "valueField" : "value",
+                                        "options" : [],
+                                        "rules" : []
+                                    }, 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "name",
+                                        "path" : "contactInfo1.name",
+                                        "label" : "姓名",
+                                        "placeholder" : "请输入姓名",
+                                        "rules" : [ 
+                                            {
+                                                "required" : true,
+                                                "message" : "年龄为必填"
+                                            }
+                                        ]
+                                    }, 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "phone",
+                                        "path" : "contactInfo1.phone",
+                                        "label" : "手机号码",
+                                        "placeholder" : "请输入手机号码",
+                                        "rules" : [ 
+                                            {
+                                                "required" : true,
+                                                "message" : "手机号码为必填"
+                                            }
+                                        ]
+                                    }, 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "jobTitle",
+                                        "path" : "contactInfo1.jobTitle",
+                                        "label" : "单位名称",
+                                        "placeholder" : "请输入单位名称",
+                                        "rules" : []
+                                    }, 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "telephone",
+                                        "path" : "contactInfo1.telephone",
+                                        "label" : "固话",
+                                        "placeholder" : "请输入固定电话",
+                                        "place" : "TOPBOTTOM",
+                                        "rules" : []
+                                    }, 
+                                    {
+                                        "type" : "cascadeSelect",
+                                        "name" : "familyAddressCity1",
+                                        "optionDataKey" : "CITY",
+                                        "path" : "contactInfo.familyAddressCity",
+                                        "label" : "家庭地址",
+                                        "placeholder" : "Please select",
+                                        "defaultvalue" : [ 
+                                            "110000", 
+                                            "110100", 
+                                            "110101"
+                                        ],
+                                        "disabled" : false,
+                                        "options" : [],
+                                        "rules" : [],
+                                        "place" : "TOPBOTTOM"
+                                    }, 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "residenceAddressDetails",
+                                        "path" : "contactInfo1.residenceAddressDetails",
+                                        "label" : "家庭地址详细",
+                                        "placeholder" : "请输入家庭地址详细",
+                                        "rules" : [ 
+                                            {
+                                                "required" : true,
+                                                "message" : "家庭地址为必填"
+                                            }
+                                        ],
+                                        "place" : "TOPBOTTOM"
+                                    }, 
+                                    {
+                                        "type" : "cascadeSelect",
+                                        "name" : "companyAddressCity",
+                                        "optionDataKey" : "CITY",
+                                        "path" : "contactInfo1.companyAddressCity",
+                                        "label" : "单位地址",
+                                        "placeholder" : "Please select",
+                                        "defaultvalue" : [ 
+                                            "110000", 
+                                            "110100", 
+                                            "110101"
+                                        ],
+                                        "disabled" : false,
+                                        "options" : [],
+                                        "rules" : [ 
+                                            {
+                                                "required" : true,
+                                                "message" : "单位地址"
+                                            }
+                                        ],
+                                        "place" : "TOPBOTTOM"
+                                    }, 
+                                    {
+                                        "type" : "textfield",
+                                        "inputType" : "text",
+                                        "name" : "companyAddressDetails",
+                                        "path" : "contactInfo1.companyAddressDetails",
+                                        "label" : "单位地址详细",
+                                        "placeholder" : "请输入单位详细地址",
+                                        "rules" : []
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "place" : ""
+                }
+            ]
+        }, 
+        {
+            "type" : "button",
+            "label" : "保存",
+            "style" : "success",
+            "buttonType" : "save",
+            "actionPath" : "http://172.16.35.51:3000/api/createformdata",
+            "onFunction" : "function submit(){alert('您好');}"
+        }
+    ],
+    "formDictionaryPath" : "",
+    "dataPath" : "",
+    "path" : "http://172.16.35.51/api/dummyform",
+    "title" : "demo",
+    "created" : "2017-07-17T10:29:33.113Z",
+    "modified" : "2017-07-17T10:29:33.113Z",
+    "name" : "demo"
+}
